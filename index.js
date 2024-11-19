@@ -26,9 +26,7 @@ app.use(session({
 app.use(require('./utils/logger').Logger);
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+app.use('/api', require('./routes'));
 
 app.use('*', (req, res) => {
     req.error(req, res, 404, 'Page not found!');
@@ -36,7 +34,7 @@ app.use('*', (req, res) => {
 
 app.use(errorHandler(mode));
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.clear();
-    console.log(`Server is running on ${process.env.HOST || 'http://localhost'}:${process.env.PORT || 3000}`);
+    console.log(`Server is running on ${process.env.HOST || 'http://localhost'}:${process.env.PORT || 5000}`);
 });

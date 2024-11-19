@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js && npm run start --prefix frontend",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:server": "nodemon index.js",
+    "dev:frontend": "cd frontend && npm start",
     "build": "npm run build --prefix frontend"
   },
   "keywords": [],
@@ -20,5 +22,8 @@
     "express-async-errors": "^3.1.1",
     "express-session": "^1.18.1",
     "mongoose": "^8.8.2"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.2"
   }
 }
